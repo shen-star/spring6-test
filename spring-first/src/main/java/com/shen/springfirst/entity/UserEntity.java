@@ -1,4 +1,4 @@
-package com.shen.springdemo.entity;
+package com.shen.springfirst.entity;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package com.shen.entity;
 
-import com.shen.springdemo.entity.UserEntity;
+import com.shen.springfirst.entity.UserEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -37,7 +37,7 @@ class TestUserEntity {
 
     @Test
     void reflectionUser() throws Exception {
-        Class<?> cls = Class.forName("com.shen.springdemo.entity.UserEntity");
+        Class<?> cls = Class.forName("com.shen.springfirst.entity.UserEntity");
         Constructor<?> constructor = cls.getConstructor();
         Object object = constructor.newInstance();
         Method method = cls.getMethod("printHello");
