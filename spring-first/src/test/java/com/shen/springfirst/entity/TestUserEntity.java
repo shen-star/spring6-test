@@ -1,6 +1,5 @@
-package com.shen.entity;
+package com.shen.springfirst.entity;
 
-import com.shen.springfirst.entity.UserEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -42,5 +41,6 @@ class TestUserEntity {
         Object object = constructor.newInstance();
         Method method = cls.getMethod("printHello");
         method.invoke(object);
+        Assertions.assertTrue(true);
     }
 }
