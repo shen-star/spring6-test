@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--1.set方式注入-->
+    <bean id="bookEntity3" class="com.shen.springiocxml.entity.BookEntity">
+        <property name="name" value="英语"></property>
+        <property name="author" value="李华"></property>
+    </bean>
+
+    <!--2.全参构造器方式注入-->
+    <bean id="bookEntity4" class="com.shen.springiocxml.entity.BookEntity">
+        <constructor-arg name="name" value="物理"></constructor-arg>
+<!--        <constructor-arg index="0" value="物理"></constructor-arg>-->
+        <constructor-arg name="author" value="小王"></constructor-arg>
+<!--        <constructor-arg index="1" value="小王"></constructor-arg>-->
+    </bean>
+</beans>
