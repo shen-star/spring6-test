@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--    方法1-->
+    <bean id="deptEntityOne" class="com.shen.springiocxml.entity.DeptEntity">
+        <property name="dName" value="财务部"></property>
+    </bean>
+
+    <bean id="empEntityOne" class="com.shen.springiocxml.entity.EmpEntity">
+        <property name="eName" value="小王"></property>
+        <property name="age" value="23"></property>
+        <!--        引入外部bean ref的值为对应bean的id-->
+        <property name="deptEntity" ref="deptEntityOne"></property>
+    </bean>
+
+    <!--    方法2-->
+    <bean id="empEntityTwo" class="com.shen.springiocxml.entity.EmpEntity">
+        <property name="eName" value="小刘"></property>
+        <property name="age" value="35"></property>
+        <!--        内部bean-->
+        <property name="deptEntity">
+            <bean id="deptEntityTwo" class="com.shen.springiocxml.entity.DeptEntity">
+                <property name="dName" value="研发部"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--    方法3(不常用)-->
+    <bean id="deptEntityThree" class="com.shen.springiocxml.entity.DeptEntity">
+        <property name="dName" value="销售部"></property>
+    </bean>
+
+    <bean id="empEntityThree" class="com.shen.springiocxml.entity.EmpEntity">
+        <property name="eName" value="小张"></property>
+        <property name="age" value="35"></property>
+        <!--        级联赋值-->
+        <property name="deptEntity" ref="deptEntityThree"></property>
+        <property name="deptEntity.dName" value="测试部"></property>
+    </bean>
+</beans>
