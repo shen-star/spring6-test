@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 测试emp实体类
  */
 public class TestEmpEntity {
-    public static final Logger logger = LoggerFactory.getLogger(Logger.class);
+    public static final Logger logger = LoggerFactory.getLogger(TestEmpEntity.class);
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("bean-object-di.xml");
@@ -20,5 +20,10 @@ public class TestEmpEntity {
         logger.info("emlEntityTwo :{}", empEntityTwo);
         EmpEntity empEntityThree = context.getBean("empEntityThree", EmpEntity.class);
         logger.info("empEntityThree :{}", empEntityThree);
+
+        context = new ClassPathXmlApplicationContext("bean-array-di.xml");
+        EmpEntity empEntity = context.getBean("empEntity", EmpEntity.class);
+        logger.info("empEntity's hobby :");
+        empEntity.printHobby();
     }
 }

@@ -1,13 +1,34 @@
 package com.shen.springiocxml.entity;
 
+import com.shen.springiocxml.test.TestEmpEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 员工实体类
  */
 
 public class EmpEntity {
+    public static final Logger logger = LoggerFactory.getLogger(EmpEntity.class);
     private String eName;
     private String age;
     private DeptEntity deptEntity;
+
+    private String[] hobby;
+
+    public String[] getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String[] hobby) {
+        this.hobby = hobby;
+    }
+
+    public void printHobby() {
+        for (String s : this.hobby) {
+            logger.info("{}", s);
+        }
+    }
 
     @Override
     public String toString() {

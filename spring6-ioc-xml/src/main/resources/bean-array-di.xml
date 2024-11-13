@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="deptEntity" class="com.shen.springiocxml.entity.DeptEntity">
+        <property name="dName" value="财务部"></property>
+    </bean>
+
+    <bean id="empEntity" class="com.shen.springiocxml.entity.EmpEntity">
+        <property name="hobby">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </property>
+        <property name="eName" value="小王"></property>
+        <property name="age" value="23"></property>
+        <!--        引入外部bean ref的值为对应bean的id-->
+        <property name="deptEntity" ref="deptEntity"></property>
+    </bean>
+</beans>
