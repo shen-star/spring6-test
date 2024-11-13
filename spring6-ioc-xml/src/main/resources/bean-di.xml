@@ -5,15 +5,24 @@
 
     <!--1.set方式注入-->
     <bean id="bookEntity3" class="com.shen.springiocxml.entity.BookEntity">
+        <!--        字面量赋值-->
         <property name="name" value="英语"></property>
-        <property name="author" value="李华"></property>
+        <!--        <property name="author" value="李华"></property>-->
+        <!--        null值-->
+        <!--        <property name="author">-->
+        <!--            <null/>-->
+        <!--        </property>-->
+        <!--        xml实体-->
+        <!--        <property name="author" value="&lt;&gt;"></property>-->
+        <!--        CDATA节-->
+        <property name="author"> <value><![CDATA[a < b]]></value></property>
     </bean>
 
     <!--2.全参构造器方式注入-->
     <bean id="bookEntity4" class="com.shen.springiocxml.entity.BookEntity">
         <constructor-arg name="name" value="物理"></constructor-arg>
-<!--        <constructor-arg index="0" value="物理"></constructor-arg>-->
+        <!--        <constructor-arg index="0" value="物理"></constructor-arg>-->
         <constructor-arg name="author" value="小王"></constructor-arg>
-<!--        <constructor-arg index="1" value="小王"></constructor-arg>-->
+        <!--        <constructor-arg index="1" value="小王"></constructor-arg>-->
     </bean>
 </beans>
