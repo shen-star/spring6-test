@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="teacherEntityOne" class="com.shen.springiocxml.entity.TeacherEntity">
+        <property name="tid" value="1"></property>
+        <property name="tname" value="张老师"></property>
+    </bean>
+
+    <bean id="teacherEntityTwo" class="com.shen.springiocxml.entity.TeacherEntity">
+        <property name="tid" value="2"></property>
+        <property name="tname" value="李老师"></property>
+    </bean>
+
+    <bean id="studentEntityOne" class="com.shen.springiocxml.entity.StudentEntity">
+        <property name="sid" value="1"></property>
+        <property name="sname" value="小王"></property>
+        <property name="teacherMap">
+            <map>
+                <entry>
+                    <key>
+                        <value>语文</value>
+                    </key>
+                    <!--                    如果是基本类型使用value即可-->
+                    <!--                    <value></value>-->
+                    <ref bean="teacherEntityOne"></ref>
+                </entry>
+
+                <entry>
+                    <key>
+                        <value>数学</value>
+                    </key>
+                    <ref bean="teacherEntityOne"></ref>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>
