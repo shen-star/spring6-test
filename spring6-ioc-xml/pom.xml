@@ -21,6 +21,19 @@
     </properties>
 
     <dependencies>
+        <!-- MySQL驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
+
+        <!-- 数据源 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.15</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
