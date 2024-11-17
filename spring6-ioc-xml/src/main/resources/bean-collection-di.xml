@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="empEntityOne" class="com.shen.springiocxml.entity.EmpEntity">
+        <property name="eName" value="小王"></property>
+        <property name="age" value="23"></property>
+    </bean>
+
+    <bean id="empEntityTwo" class="com.shen.springiocxml.entity.EmpEntity">
+        <property name="eName" value="小刘"></property>
+        <property name="age" value="35"></property>
+    </bean>
+
+    <bean id="deptEntityOne" class="com.shen.springiocxml.entity.DeptEntity">
+        <property name="dName" value="财务部"></property>
+        <property name="empList">
+            <list>
+                <!--                如果list中的元素时基本类型，可以用value标签表示-->
+                <!--                <value>s</value>-->
+                <ref bean="empEntityOne"></ref>
+                <ref bean="empEntityTwo"></ref>
+            </list>
+        </property>
+    </bean>
+</beans>
