@@ -1,25 +1,27 @@
 package com.shen.shouxieioc.bean;
 
 import com.shen.shouxieioc.annoation.Bean;
+import com.shen.shouxieioc.annoation.Di;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class AnnoationApplicationContext implements ApplicationContext {
 
     private final static Logger logger = LoggerFactory.getLogger(AnnoationApplicationContext.class);
 
     //创建map集合，存入bean对象
-    private Map<Class<?>, Object> beanFactory = new HashMap<>();
+    private final Map<Class<?>, Object> beanFactory = new HashMap<>();
     private String rootPath;
 
     @Override
@@ -94,23 +96,33 @@ public class AnnoationApplicationContext implements ApplicationContext {
                 }
             }
         }
+        //属性注入
+        loadDi();
     }
 
-
-    public static void main(String[] args) throws IOException {
-        //1.把.替换成\
-        String packagePath = "com.shen.shouxieioc".replaceAll("\\.", "\\\\");
-
-        //2.获取包的绝对路径
-        Enumeration<URL> urls = Thread.currentThread().getContextClassLoader().getResources(packagePath);
-        while (urls.hasMoreElements()) {
-            URL url = urls.nextElement();
-            String filePath = URLDecoder.decode(url.getFile(), StandardCharsets.UTF_8);
-            String rootPath = filePath.substring(0, filePath.length() - packagePath.length());
-            logger.info(filePath);
-            String classPath = filePath.substring(rootPath.length());
-            String className = filePath.substring(rootPath.length()).replaceAll("\\\\", ".");
-            logger.info(classPath);
+    private void loadDi() throws IllegalAccessException {
+        //实例化对象在beanFactory中
+        //1. 遍历beanFactory的map集合
+        Set<Map.Entry<Class<?>, Object>> entries = beanFactory.entrySet();
+        for (Map.Entry<Class<?>, Object> entry : entries) {
+            //2. 获取map集合中每个对象，并且获取每个对象的所有属性
+            Object object = entry.getValue();
+            //获取Class类对象
+            Class<?> cls = object.getClass();
+            //获取所有属性
+            Field[] fields = cls.getDeclaredFields();
+            //3. 遍历属性数组
+            for (Field field : fields) {
+                Di annotation = field.getAnnotation(Di.class);
+                //4. 判断属性上是否有@Di注解
+                if (annotation != null) {
+                    //暴破，允许对私有属性赋值
+                    field.setAccessible(true);
+                    //5. 如果有@Di注解，把此属性的对象进行注入
+                    field.set(object, beanFactory.get(field.getType()));
+                }
+            }
         }
+
     }
 }
