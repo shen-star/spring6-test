@@ -50,7 +50,7 @@ public class LogAspect {
         logger.info("异常通知========，方法名为:{},异常为:{}", methodName, throwable);
     }
 
-    @Around(value = "execution(* com.shen.springaop.annoaop.CalculatorImpl.div(..))")
+    @Around("com.shen.springaop.annoaop.LogAspect.pointCut()")
     public Object aroundMethod(ProceedingJoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         Object object = null;
@@ -64,5 +64,9 @@ public class LogAspect {
             logger.info("环绕通知===，目标方法执行完毕");
         }
         return object;
+    }
+
+    @Pointcut(value = "execution(* com.shen.springaop.annoaop.CalculatorImpl.div(..))")
+    public void pointCut() {
     }
 }
