@@ -33,7 +33,8 @@ public class CalculatorImpl implements Calculator {
         int result = i * j;
 
         System.out.println("方法内部 result = " + result);
-
+        //为了测试模拟异常
+        int a = 1 / 0;
         return result;
     }
 
@@ -43,7 +44,8 @@ public class CalculatorImpl implements Calculator {
         int result = i / j;
 
         System.out.println("方法内部 result = " + result);
-
+        //为了测试模拟异常
+//        int a = 1 / 0;
         return result;
     }
 }
