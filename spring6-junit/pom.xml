@@ -34,6 +34,13 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.9.0</version>
         </dependency>
+
+        <!-- junit4测试 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
     </dependencies>
 
     <build>
