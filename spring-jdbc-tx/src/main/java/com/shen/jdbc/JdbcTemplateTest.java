@@ -40,7 +40,7 @@ public class JdbcTemplateTest {
     @Test
     public void testDQL() {
         //插入一些数据
-//        insertData();
+        insertData();
         //查询一个对象数据
         selectObjectData();
         //查询一个对象集合
