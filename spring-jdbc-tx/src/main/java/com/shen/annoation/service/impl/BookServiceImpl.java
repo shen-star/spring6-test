@@ -20,7 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 //事务属性设置隔离级别 READ_UNCOMMITTED 读未提交 ，READ_COMMITTED 读已提交 ，REPEATABLE_READ 可重复读 ，SERIALIZABLE 串行化，DEFAULT按数据库默认隔离级别
 //@Transactional(isolation = Isolation.READ_COMMITTED)
 //事务属性-事务的传播行为 总共7种，常见的 REQUIRED 支持当前事务，如果不存在就新建一个 。REQUIRES_NEW 开启一个新事务
-@Transactional(propagation = Propagation.REQUIRES_NEW)
+//@Transactional(propagation = Propagation.REQUIRES_NEW)
+@Transactional
 public class BookServiceImpl implements BookService {
     private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
     @Autowired
