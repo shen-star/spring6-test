@@ -21,6 +21,19 @@
     </properties>
 
     <dependencies>
+        <!--spring对junit的支持相关依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>6.0.11</version>
+        </dependency>
+
+        <!--junit5测试-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.0</version>
+        </dependency>
     </dependencies>
 
     <build>
