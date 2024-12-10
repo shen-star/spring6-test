@@ -34,7 +34,6 @@ public class UrlResourceDemo {
         logger.info("获取文件名:{}", urlResource.getFilename());
         logger.info("获取URI:{}", urlResource.getURI());
         logger.info("获取URL的描述:{}", urlResource.getDescription());
-        logger.info("获取流中的内容:{}", urlResource.getInputStream().read());
         InputStream inputStream = urlResource.getInputStream();
         byte[] bytes = new byte[1024];
         int len;
@@ -42,5 +41,6 @@ public class UrlResourceDemo {
             String s = new String(bytes, 0, len, StandardCharsets.UTF_8);
             logger.info("读取流的内容：{}", s);
         }
+        inputStream.close();
     }
 }
