@@ -3,14 +3,16 @@ package com.shen.annoation.test;
 import com.shen.annoation.config.SpringConfig;
 import com.shen.annoation.controller.BookController;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+@SpringJUnitConfig(classes = SpringConfig.class)
 public class TestAllAnnoationBuyBook {
+    @Autowired
+    private BookController bookController;
+
     @Test
     void buyBook() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
-        BookController bookController = applicationContext.getBean(BookController.class);
         bookController.buyBook(1, 1);
     }
 }
