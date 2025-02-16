@@ -21,8 +21,7 @@ import jakarta.validation.constraints.Size;
  */
 public class User {
     @NotNull
-    private
-    String name;
+    private String name;
     @Max(200)
     @Min(1)
     private int age;
